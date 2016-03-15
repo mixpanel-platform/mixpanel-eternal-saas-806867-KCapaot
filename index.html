@@ -172,7 +172,7 @@
           _.each(r, function(item) {
             _.each(_.keys(item), function(step) {
               if (step != 'Total' && step != 'Property') {
-                item['Step ' + step] = add_commas(item[step]) + ' (' + Math.round(item[step] * 1000000 / item.Total) / 10000 + '%)';
+                item['Step ' + step] = Math.round(item[step] * 10000 / item.Total) / 100 + '% (' + add_commas(item[step]) + ')';
                 delete item[step];
               }
               else if (step == 'Total') {
