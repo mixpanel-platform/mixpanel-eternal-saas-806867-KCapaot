@@ -106,11 +106,11 @@
         .groupBy([function(item) {return item.value.num_steps;}, function(item) {return item.value.property;}], count())
       }
     </script>
+    <div class='mixpanel-platform-section'>
+      <div id="dates"></div>
+    </div>
     <div class="mixpanel-platform-section">
       <table width='725'>
-        <tr>
-          <td colspan='2' align='left'><div id="dates"></div></td>
-        </tr>
         <tr>
           <td width='245' align='right'><div class="label">Funnel Steps:</div></td>
           <td width='480' align='right'><input size='100' id="event_list" value="Sign up for Trial, Complete Chat, Complete Session"></td>
