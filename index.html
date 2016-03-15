@@ -39,9 +39,6 @@
         font-weight: bold;
         display: inline-block;
       }
-/*      #dates {
-        float: right;
-      }*/
       input {
         font-family:  system, -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", sans-serif;
         font-weight: normal;
@@ -128,15 +125,6 @@
           </td>
         </tr>
       </table>
-<!--       <div id="dates"></div>
-      <div class="events">
-        <div class="label">Funnel Steps:</div>
-        <input id="event_list" value="Sign up for Trial, Complete Chat, Complete Session">
-        <div></div>
-        <div class="label">Property:</div>
-        <div id="propSelect"></div>
-        <div id="run">RUN</div>
-      </div> -->
     </div>
     <div id="table"></div>
     <script>
@@ -158,6 +146,7 @@
         };
         event_list = $('#event_list').val().split(',');
         event_list = _.map(event_list, remove_beginning_spaces);
+        prop = property.MPPropertySelect('value');
         var dateVal = $('#dates').val();
         var script = $('#cq').html();
         var queryParams = {
@@ -165,7 +154,7 @@
             from_date: date_to_string(dateVal.from),
             to_date: date_to_string(dateVal.to),
             time_between_steps: 3600000, //an hour
-            property: property.MPPropertySelect('value')
+            property: prop
           };
         MP.api.custom_query(script, queryParams).done(function(results) {
           var res = {};
@@ -201,7 +190,8 @@
               }
             });
           });
-          r.unshift('');
+          if (r.length > 2)
+            r.unshift('');
           delete r[0];
           eventTable.MPTable('setData', r);
         });
