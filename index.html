@@ -157,6 +157,7 @@
             property: prop
           };
         MP.api.custom_query(script, queryParams).done(function(results) {
+          console.log(results);
           var res = {};
           _.each(results, function(item) {
             res[item.key[1]] = res[item.key[1]] || {};
